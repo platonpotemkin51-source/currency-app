@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная страница приложения</title>
+</head>
+<body>
+    {% if flag == True %}
+        <h1>Информация о приложении</h1>
+    {% else %}
+        <h1>Информация об авторе</h1>
+    {% endif %}
+    <!-- Информация о приложении -->
+    <div>
+        {% if flag %}
+            <h2>Приложение</h2>
+            <p><strong>Название:</strong> {{app.name}}</p>
+            <p><strong>Версия:</strong> {{app.version}}</p>
+        {% else %}
+            <h2>Автор: </h2>
+            <p><strong>Имя:</strong> {{ app.author.name }}</p>
+            <p><strong>Группа:</strong> {{ app.author.group }}</p>
+        {% endif %}
+    </div>
+
+    <!-- Информация об авторе -->
+    <div>
+        {% if flag %}
+            <h2>Автор</h2>
+            <a href="/author">{{ app.author.name }}</a>
+        {% else %}
+            <h2>Приложение</h2>
+            <a href="/">{{ app.name }}</a>
+        {% endif %}
+    </div>
+
+    <!-- Ссылки для перехода -->
+    <div>
+        <h2>Перейти к:</h2>
+        <ul>
+            <li><a href="/currencies">Список всех валют</a></li>
+            <li><a href="/users">Список всех пользователей</a></li>
+        </ul>
+    </div>
+
+    <!-- Статистика -->
+    <div>
+        <h2>Статистика</h2>
+        <p>Всего валют в системе: {{currencies_count}}</p>
+        <p>Всего пользователей в системе: {{users_count}}</p>
+    </div>
+</body>
+</html>

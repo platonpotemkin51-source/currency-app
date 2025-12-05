@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Список пользователей</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .user-email {
+            font-style: italic;
+        }
+        .subscriptions-count {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Список всех пользователей</h1>
+    <a href="/">← На главную</a>
+    <hr>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Имя</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td><strong><a href="/user?id={{ user.id }}">{{ user.name }}</a></strong></td>
+            <tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p><strong>Всего пользователей:</strong> {{users_count}}</p>
+</body>
+</html>
