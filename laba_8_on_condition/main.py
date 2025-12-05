@@ -72,6 +72,9 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
                     currencies=currencies
             )
 
+        # Handle unknown paths
+        if 'result' not in locals():
+            result = "<html><body><h1>404 Not Found</h1></body></html>"
 
         self.send_response(200)
         self.send_header('Content-Type', 'text/html; charset=utf-8')
